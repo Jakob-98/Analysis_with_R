@@ -85,13 +85,35 @@ final <- c(78, 84, 95, 82, 91)
 final + midterm
 grade_average <- (final + midterm) / 2
 final_grade <- 0.6*final + 0.4*midterm
+final > midterm & midterm > 80#bool test
 
+#vector arithmatic
+short.vec <- c(0,1)
+long.vec <- c(2,3,4,5,6,7,8,9,9)
+final.vec = short.vec * long.vec
+final.vec
 
+mean(final_grade)
+median(final_grade)
+sd(final_grade)
 
+sort(final_grade)
+sort(final_grade, decreasing = TRUE)
 
+a.threshhold <- 90
+final_grade >= a.threshhold
 
+students[a.students <- which(final_grade >= a.threshhold)]
+(names(final_grade) <- students)
 
+carsdf <- cars
+summary(carsdf)
+slow.cars.df <- carsdf[carsdf$speed[carsdf$speed<12],]
+str(slow.cars.df)
+head(slow.cars.df)
 
+slow.cars.df.2 <- subset(carsdf, carsdf$speed<12)
+head(slow.cars.df.2,4)
 
 ## some extra personal testing
 is_even <- function(nmb) {

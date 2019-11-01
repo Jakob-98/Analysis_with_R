@@ -2,14 +2,31 @@
 title: "serlierRmarkdown"
 output: html_document
 runtime: shiny
+date: 'Assigned: '
 ---
 
-```{r setup, include=FALSE}
+```{r first chunk, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## R Markdown
 ## test312123 
+
+```{r test}
+(a <- c(1,2,3,4))
+```
+```{python}
+print('test')
+x = 3
+```
+
+```{r}
+library(reticulate)
+py$x
+x <- 14
+```
+
+
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
