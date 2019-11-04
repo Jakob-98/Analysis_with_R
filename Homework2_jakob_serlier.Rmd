@@ -45,7 +45,7 @@ Given a variable `x`, write a Boolean expression that evaluates to `TRUE` if the
 ```{r}
 x <- NA #assignment
 # Insert your Boolean expression here
-is.na(x) #bool check
+!is.na(x) #bool check
 ```
 
 ## (c) Checking if a number is in a given range. 
@@ -53,6 +53,7 @@ is.na(x) #bool check
 Given a (possibly negative) number `x`, write a Boolean expression that returns `TRUE` if and only if `x` is smaller than `-12` or bigger than `29`.  
 
 ```{r}
+x <- -13
 # Insert your Boolean expression here
 x < -12 | x > 29
 ```
@@ -166,11 +167,7 @@ Write code that uses negative indexes and your solution from (a) to return only 
 # question: is it best practise to only use lowercase letters in declaration of variables? ex. should I use non_na_age or non_NA_age, or does it not matter? 
 # Edit me
 
-#so my initial thought was to use this code, but this doesn't use negative indexes:
-(non_NA_age <- age[which(!is.na(age))])
-
-#I'm not sure if this is the way you wanted us to solve it, but it seems more counterintuitive than just using the *not* operator. 
-(non_NA_age <- age[-which(is.na(age))])
+(non_NA_age <- age[-which(is.na(age))]) #seems more complicated than just using the ! operator.
 
 ```
 
@@ -208,7 +205,7 @@ Use the `which.min()` function to figure out which car had the *shortest* stoppi
 
 ```{r}
 # Edit me
-cars[which.min(dist), ]
+which.min(cars$dist) #returns the index, to retrieve the row do cars[index, ]
 ```
 
 ## (f) More practice 

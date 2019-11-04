@@ -489,15 +489,16 @@ summary {
 <p>Given a variable <code>x</code>, write a Boolean expression that evaluates to <code>TRUE</code> if the variable <code>x</code> is <em>not</em> <code>NA</code> (i.e., is not missing).</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">x &lt;-<span class="st"> </span><span class="ot">NA</span> <span class="co">#assignment</span></a>
 <a class="sourceLine" id="cb3-2" title="2"><span class="co"># Insert your Boolean expression here</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw">is.na</span>(x) <span class="co">#bool check</span></a></code></pre></div>
-<pre><code>## [1] TRUE</code></pre>
+<a class="sourceLine" id="cb3-3" title="3"><span class="op">!</span><span class="kw">is.na</span>(x) <span class="co">#bool check</span></a></code></pre></div>
+<pre><code>## [1] FALSE</code></pre>
 </div>
 <div id="c-checking-if-a-number-is-in-a-given-range." class="section level2">
 <h2>(c) Checking if a number is in a given range.</h2>
 <p>Given a (possibly negative) number <code>x</code>, write a Boolean expression that returns <code>TRUE</code> if and only if <code>x</code> is smaller than <code>-12</code> or bigger than <code>29</code>.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="co"># Insert your Boolean expression here</span></a>
-<a class="sourceLine" id="cb5-2" title="2">x <span class="op">&lt;</span><span class="st"> </span><span class="dv">-12</span> <span class="op">|</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">29</span></a></code></pre></div>
-<pre><code>## [1] NA</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">x &lt;-<span class="st"> </span><span class="dv">-13</span></a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="co"># Insert your Boolean expression here</span></a>
+<a class="sourceLine" id="cb5-3" title="3">x <span class="op">&lt;</span><span class="st"> </span><span class="dv">-12</span> <span class="op">|</span><span class="st"> </span>x <span class="op">&gt;</span><span class="st"> </span><span class="dv">29</span></a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="problem-2-vector-boolean-operations" class="section level2">
 <h2>Problem 2: Vector Boolean operations</h2>
@@ -528,8 +529,9 @@ summary {
 <pre><code>## [1] TRUE</code></pre>
 <p>Can you explain what’s happening? Write up a brief explanation below.</p>
 <p><font color="#336600"></p>
-<p>&amp;&amp;, &amp;, |, and || are all logic operators in R. || and &amp;&amp; are element based logic operators, whereas | and &amp; are vector based logic operators. vector | (or &amp;) vector evaluates each element in the vector, and gives that as a logical output. vector || (or &amp;&amp;) vector evaluates the first element in each vector for the returned boolean output.</p>
-<p>In the first example, as y.prob2a is not defined/instantiated, you cannot perform a vector-wise operation such as | or &amp;, as the second vector is not defined. Therefore it cannot return a vector with booleans, and throws an exception. For the || it does not matter if the second vector is defined, as the ‘or’ statement returns true if either of the elements are true, and since the fi=rst vector is defined and the first element holds true, the logic operaton returns true.</p>
+<p>&amp;&amp;, &amp;, |, and || are all logic operators in R. || and &amp;&amp; are element based logic operators, whereas | and &amp; can be used as vector based logic operators. (vector | (or &amp;) vector) evaluates each element in the vector, and gives that as a logical output. (vector || (or &amp;&amp;) vector) evaluates the <i>first</i> element in each vector for the returned boolean output.</p>
+<p>In the first example, as y.prob2a is not defined/instantiated, you cannot perform a vector-wise operation such as | or &amp;. It cannot compare elements of a vector to elements of an undefined vector.Therefore it cannot return a vector with booleans, and throws an exception.</p>
+<p>For the || example, the ‘or’ statement returns true if either of the statements are true. Since the first vector is defined and the first element holds true, the logic operaton returns true without the second vector having to be defined.</p>
 <p></font></p>
 </div>
 <div id="b-using-all" class="section level2">
@@ -561,7 +563,7 @@ summary {
 <a class="sourceLine" id="cb22-5" title="5"></a>
 <a class="sourceLine" id="cb22-6" title="6"><span class="co"># Edit me -&gt; my answer.</span></a>
 <a class="sourceLine" id="cb22-7" title="7">bool_vec &lt;-<span class="kw">is.na</span>(age)</a>
-<a class="sourceLine" id="cb22-8" title="8"><span class="kw">length</span>(bool_vec) <span class="op">==</span><span class="st"> </span><span class="kw">length</span>(age)</a></code></pre></div>
+<a class="sourceLine" id="cb22-8" title="8"><span class="kw">length</span>(bool_vec) <span class="op">==</span><span class="st"> </span><span class="kw">length</span>(age) <span class="co">#lengths are the same</span></a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
 <div id="problem-3-referencing-vector-elements" class="section level2">
@@ -579,7 +581,8 @@ summary {
 <p>Write code that uses negative indexes and your solution from (a) to return only the values of <code>age</code> that are <em>not</em> missing. (i.e., your code should result in a vector with elements: 18, 25, 71, 45, 18)</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="co"># question: is it best practise to only use lowercase letters in declaration of variables? ex. should I use non_na_age or non_NA_age, or does it not matter? </span></a>
 <a class="sourceLine" id="cb26-2" title="2"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb26-3" title="3">(non_NA_age &lt;-<span class="st"> </span>age[<span class="kw">which</span>(<span class="op">!</span><span class="kw">is.na</span>(age))])</a></code></pre></div>
+<a class="sourceLine" id="cb26-3" title="3"></a>
+<a class="sourceLine" id="cb26-4" title="4">(non_NA_age &lt;-<span class="st"> </span>age[<span class="op">-</span><span class="kw">which</span>(<span class="kw">is.na</span>(age))]) <span class="co">#seems more complicated than just using the ! operator.</span></a></code></pre></div>
 <pre><code>## [1] 18 25 71 45 18</code></pre>
 </div>
 <div id="c-a-more-direct-way-of-getting-non-missing-values" class="section level2">
@@ -644,69 +647,21 @@ summary {
 ## 48    24   93
 ## 49    24  120
 ## 50    25   85</code></pre>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">cars[<span class="kw">which</span>(dist <span class="op">&gt;</span><span class="st"> </span><span class="dv">15</span>), ]</a></code></pre></div>
-<pre><code>##    speed dist
-## 4      7   22
-## 5      8   16
-## 7     10   18
-## 8     10   26
-## 9     10   34
-## 10    11   17
-## 11    11   28
-## 13    12   20
-## 14    12   24
-## 15    12   28
-## 16    13   26
-## 17    13   34
-## 18    13   34
-## 19    13   46
-## 20    14   26
-## 21    14   36
-## 22    14   60
-## 23    14   80
-## 24    15   20
-## 25    15   26
-## 26    15   54
-## 27    16   32
-## 28    16   40
-## 29    17   32
-## 30    17   40
-## 31    17   50
-## 32    18   42
-## 33    18   56
-## 34    18   76
-## 35    18   84
-## 36    19   36
-## 37    19   46
-## 38    19   68
-## 39    20   32
-## 40    20   48
-## 41    20   52
-## 42    20   56
-## 43    20   64
-## 44    22   66
-## 45    23   54
-## 46    24   70
-## 47    24   92
-## 48    24   93
-## 49    24  120
-## 50    25   85</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1"><span class="co">#or ... cars[which(dist &gt; 15), ]</span></a></code></pre></div>
 </div>
 <div id="e-which.min-which.max-practice" class="section level2">
 <h2>(e) <code>which.min</code>, <code>which.max</code> practice</h2>
 <p>Use the <code>which.min()</code> function to figure out which car had the <em>shortest</em> stopping distance. (Your code should return the car’s index.)</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb35-2" title="2">cars[<span class="kw">which.min</span>(dist), ]</a></code></pre></div>
-<pre><code>##   speed dist
-## 1     4    2</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="co"># Edit me</span></a>
+<a class="sourceLine" id="cb34-2" title="2"><span class="kw">which.min</span>(cars<span class="op">$</span>dist) <span class="co">#returns the index, to retrieve the row do cars[index, ]</span></a></code></pre></div>
+<pre><code>## [1] 1</code></pre>
 </div>
 <div id="f-more-practice" class="section level2">
 <h2>(f) More practice</h2>
 <p>Use the <code>which.max()</code> function to figure out the <em>speed</em> of the car that had the <em>longest</em> stopping distance. (Your code should return the car’s speed.)</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb37-1" title="1"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb37-2" title="2">cars[<span class="kw">which.max</span>(cars<span class="op">$</span>speed), ]</a></code></pre></div>
-<pre><code>##    speed dist
-## 50    25   85</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="co"># Edit me</span></a>
+<a class="sourceLine" id="cb36-2" title="2">cars[<span class="kw">which.max</span>(cars<span class="op">$</span>dist), <span class="st">&#39;speed&#39;</span>]</a></code></pre></div>
+<pre><code>## [1] 24</code></pre>
 </div>
 <div id="problem-4-data-frame-basics" class="section level2">
 <h2>Problem 4: Data frame basics</h2>
@@ -714,32 +669,32 @@ summary {
 <div id="a-importing-data." class="section level2">
 <h2>(a) Importing data.</h2>
 <p>In Lecture 2 we saw how to use the <code>read.table()</code> function to import the survey data. Now we’ll use a different function. Use the <code>read.csv()</code> function to import the survey data into a variable called <code>survey</code>.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb39-2" title="2"><span class="co">#Using relative path to my git-enabled folder</span></a>
-<a class="sourceLine" id="cb39-3" title="3">survey &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;./datasets/survey.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1"><span class="co"># Edit me</span></a>
+<a class="sourceLine" id="cb38-2" title="2"><span class="co">#Using relative path to my git folder</span></a>
+<a class="sourceLine" id="cb38-3" title="3">survey &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="dt">file=</span><span class="st">&quot;./datasets/survey.csv&quot;</span>, <span class="dt">header=</span><span class="ot">TRUE</span>, <span class="dt">sep=</span><span class="st">&quot;,&quot;</span>)</a></code></pre></div>
 <p><strong>Tip</strong>: The data file is available on Canvas. You may download the file to a directory on your machine then import it.</p>
 </div>
 <div id="b-notation" class="section level2">
 <h2>(b) <code>$</code> notation</h2>
 <p>Use the <code>$</code> operator to select the TVhours column from the <code>survey</code> data</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb40-2" title="2">(s_tvhours &lt;-<span class="st"> </span>survey<span class="op">$</span>TVhours)</a></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="co"># Edit me</span></a>
+<a class="sourceLine" id="cb39-2" title="2">(s_tvhours &lt;-<span class="st"> </span>survey<span class="op">$</span>TVhours)</a></code></pre></div>
 <pre><code>##  [1]  2 15 16  0  2  5  0  4  0  0 14  6 10 15  4  4 10  7 33  8  8  3  0
 ## [24]  0  0  0  6  1  0  0  4</code></pre>
 </div>
 <div id="c-notation" class="section level2">
 <h2>(c) [,] notation</h2>
 <p>Repeat part (b) using <code>[,]</code> notation. i.e., Use <code>[,]</code> notation to select the TVhours column from the <code>survey</code> data by name (i.e., obtain this column by using the name “TVhours” instead of using the column number)</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb42-2" title="2">(s_tvhours &lt;-<span class="st"> </span>survey[, <span class="st">&#39;TVhours&#39;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1"><span class="co"># Edit me</span></a>
+<a class="sourceLine" id="cb41-2" title="2">(s_tvhours &lt;-<span class="st"> </span>survey[, <span class="st">&#39;TVhours&#39;</span>])</a></code></pre></div>
 <pre><code>##  [1]  2 15 16  0  2  5  0  4  0  0 14  6 10 15  4  4 10  7 33  8  8  3  0
 ## [24]  0  0  0  6  1  0  0  4</code></pre>
 </div>
 <div id="d-notation" class="section level2">
 <h2>(d) [[]] notation</h2>
 <p>Repeat part (c) with [[]] notation.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb44-2" title="2">(s_tvhours &lt;-<span class="st"> </span>survey[[<span class="st">&#39;TVhours&#39;</span>]])</a></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="co"># Edit me</span></a>
+<a class="sourceLine" id="cb43-2" title="2">(s_tvhours &lt;-<span class="st"> </span>survey[[<span class="st">&#39;TVhours&#39;</span>]])</a></code></pre></div>
 <pre><code>##  [1]  2 15 16  0  2  5  0  4  0  0 14  6 10 15  4  4 10  7 33  8  8  3  0
 ## [24]  0  0  0  6  1  0  0  4</code></pre>
 </div>
@@ -747,8 +702,8 @@ summary {
 <h2>(e) [] notation</h2>
 <p>Repeat part (d), but this time using single blackets (<code>[ ]</code>) notation.</p>
 <p>(Observe that this returns a new single-column <em>data frame</em>, not just a vector.)</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb46-2" title="2">(s_tvhours &lt;-<span class="st"> </span>survey[<span class="st">&#39;TVhours&#39;</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="co"># Edit me</span></a>
+<a class="sourceLine" id="cb45-2" title="2">(s_tvhours &lt;-<span class="st"> </span>survey[<span class="st">&#39;TVhours&#39;</span>])</a></code></pre></div>
 <pre><code>##    TVhours
 ## 1        2
 ## 2       15
@@ -785,8 +740,8 @@ summary {
 <div id="f-subset-practice" class="section level2">
 <h2>(f) <code>subset()</code> practice</h2>
 <p>Use the <code>subset()</code> function to select all the survey data on Program and OperatingSystem for respondents whose Rexperience is “Never used” <em>or</em> who watched 5 or more hours of TV last week.</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb48-2" title="2">(<span class="kw">subset</span>(survey, Rexperience <span class="op">==</span><span class="st"> &#39;Never used&#39;</span> <span class="op">|</span><span class="st"> </span>TVhours <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="co"># Edit me</span></a>
+<a class="sourceLine" id="cb47-2" title="2">(<span class="kw">subset</span>(survey, Rexperience <span class="op">==</span><span class="st"> &#39;Never used&#39;</span> <span class="op">|</span><span class="st"> </span>TVhours <span class="op">&gt;</span><span class="st"> </span><span class="dv">5</span>)) </a></code></pre></div>
 <pre><code>##    ï..X Program                PriorExp          Rexperience
 ## 1     1     PPM         Some experience           Never used
 ## 2     2     PPM Never programmed before           Never used
@@ -832,8 +787,8 @@ summary {
 <div id="a-bar-graph" class="section level2">
 <h2>(a) Bar graph</h2>
 <p>Create a bar graph of respondents’ Rexperience.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="co"># Edit me</span></a>
-<a class="sourceLine" id="cb50-2" title="2"><span class="kw">plot</span>(survey<span class="op">$</span>Rexperience)</a></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="co"># Edit me</span></a>
+<a class="sourceLine" id="cb49-2" title="2"><span class="kw">plot</span>(survey<span class="op">$</span>Rexperience)</a></code></pre></div>
 <p><img src="data:image/png;base64,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" width="672" style="display: block; margin: auto;" /></p>
 </div>
 <div id="b-inline-code-practice" class="section level2">
