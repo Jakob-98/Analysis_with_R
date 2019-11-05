@@ -115,6 +115,21 @@ ggplot(data=mds.data, aes(x=X, y=Y, label=Sample)) +
 
 str(trainset)
 str(testset)
+testset2 <- testset[, intersect(colnames(trainset), colnames(testset))]
+
+testset2 <- rbind(trainset[1, ] , testset2)
+testset2 <- xtest[-1,]
+str(testset2)
+
+testset2$Sex <- as.factor(testset2$Sex)
+testset2$Pclass <- as.factor(testset2$Pclass)
+testset2$Parch <- as.factor(testset2$Parch)
+testset2$SibSp <- as.factor(testset2$SibSp)
+
+#testset2 <- factor(testset2, levels = levels(trainset))
+
+
+testset2 <- testset2[, colSums(is.na(testset2)) == 0]
 
 #predicting on the validaiton set
-predValid = predict(titanic.rf, testset, type="class")
+predValid = predict(titanic.rf, testset2, type="class")
